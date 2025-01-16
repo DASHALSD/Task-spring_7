@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add User</title>
+</head>
+<body>
+<h1>Добавить пользователя</h1>
+<form th:action="@{/admin/add}" method="post">
+    <label for="name">Имя:</label>
+    <input type="text" id="name" name="name" required><br>
+
+    <!-- Добавлено поле для фамилии -->
+    <label for="surname">Фамилия:</label>
+    <input type="text" id="surname" name="surname" placeholder="Введите фамилию" required><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br>
+
+    <label for="password">Пароль:</label>
+    <input type="password" id="password" name="password" required><br>
+
+    <label>Роли:</label><br>
+    <input type="checkbox" name="roles" value="1"> ADMIN<br>
+    <input type="checkbox" name="roles" value="2"> USER<br><br>
+
+    <button type="submit">Сохранить</button>
+</form>
+<a th:href="@{/admin}">Вернуться к списку</a>
+</body>
+</html>

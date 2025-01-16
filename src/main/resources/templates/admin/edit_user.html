@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit User</title>
+</head>
+<body>
+<h1>Редактировать пользователя</h1>
+<form th:action="@{/admin/edit/{id}(id=${user.id})}" method="post" th:object="${user}">
+    <input type="hidden" name="id" th:value="*{id}">
+
+    <label for="name">Имя:</label>
+    <input type="text" id="name" name="name" th:value="*{name}" required><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" th:value="*{email}" required><br>
+
+    <label for="password">Пароль:</label>
+    <input type="password" id="password" name="password"><br>
+
+    <label>Роли:</label><br>
+    <input type="checkbox" name="roles" value="1" th:checked="${#lists.contains(user.roles.![id], 1)}"> ADMIN<br>
+    <input type="checkbox" name="roles" value="2" th:checked="${#lists.contains(user.roles.![id], 2)}"> USER<br><br>
+
+    <button type="submit">Сохранить изменения</button>
+</form>
+<a th:href="@{/admin}">Вернуться к списку</a>
+</body>
+</html>
